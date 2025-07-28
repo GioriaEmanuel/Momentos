@@ -11,7 +11,7 @@
     @auth
         
    
-    <div id="aside-left" class="bg-fondosecundario rounded shadow-lg shadow-black py-12 px-2 flex lg:flex-col gap-4 items-center overflow-x-auto lg:overflow-y-auto max-h-11 lg:max-h-screen no-scrollbar">
+    <div id="aside-left" class="bg-fondosecundario rounded shadow-lg w-[95%] mx-auto shadow-black py-12 px-2 flex  lg:flex-col gap-4 items-center overflow-x-auto lg:overflow-y-auto max-h-11 lg:max-h-screen no-scrollbar">
         <h4 class="titulo_hero mb-4">Seguidos</h4>
         @foreach ($user->seguidos as $seguido)
         <a href="{{route('posts.muro', $seguido)}}">
@@ -146,9 +146,9 @@
     </div>
 
 
-    <div id="aside-rigth" class="bg-fondosecundario rounded shadow-lg shadow-black lg:pt-12 px-2 flex lg:flex-col gap-4 items-center justify-evenly lg:justify-start lg:max-h-screen no-scrollbar mt-8 lg:m-0 p-4 lg:p-0">
+    @auth
+    <div id="aside-rigth" class="bg-fondosecundario rounded shadow-lg shadow-black lg:pt-12 px-2 flex flex-col lg:flex-col gap-4 items-center justify-evenly lg:justify-start lg:max-h-screen no-scrollbar mt-8 lg:m-0 p-4 lg:p-0 w-[95%] mx-auto">
         <h4 class="titulo_hero mb-4 ">Opciones</h4>
-        @auth
         <a class=" flex ml-2 uppercase hover:cursor-pointer text-white text-xs hover:text-titulos transition-all" href="{{route('posts.create')}}">Nuevo Post <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="ml-2 size-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>

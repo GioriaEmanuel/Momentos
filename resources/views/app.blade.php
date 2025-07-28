@@ -110,7 +110,7 @@
     @endauth
 
 
-    <footer class=" bg-fondosecundario h-12 flex items-center justify-center">
+    <footer class=" bg-fondosecundario h-12 flex items-center justify-center mt-20 py-10">
         <h3 class=" text-white font-medium text-center"> Powered by GEM® - Todos los derechos reservados
             {{ now()->year . ' - ' . now()->month }}</h3>
     </footer>
