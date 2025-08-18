@@ -54,7 +54,7 @@
     <main>
 
 
-        <h2 class=" uppercase text-center text-titulos font-black text-5xl mb-20 mt-20 w-full">
+        <h2 class=" uppercase text-center text-titulos font-black md:text-5xl text-3xl md:mb-20 mt-20 w-full">
             @yield('titulo')
         </h2>
 

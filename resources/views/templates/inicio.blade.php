@@ -4,7 +4,7 @@
 <div class=" -mt-20 ">
 
     <div class=" hero_2 h-full w-full flex items-center p-20 justify-center" >
-        <h1 class="titulo_hero font-serif text-5xl"><span class="m_titulo text-titulos text-6xl">M</span>omentos
+        <h1 class="titulo_hero font-serif"><span class="m_titulo text-titulos text-6xl">M</span>omentos
         </h1>
     </div>
 </div>

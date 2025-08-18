@@ -28,11 +28,22 @@ class SeguirController extends Controller
     }
     public function destroy(Request $peti, User $user){
 
+        //Al pasar otro argumento en el llamado a la funcion desde blade, este llega como atributo del request, en $peti->query,
+        //lo extraigo y lo utilizo como condicion
 
-        $user->seguidores()->detach(auth()->user()->id);
+        $eliminarSeguidor = $peti->eliminarSeguidor;
+        
+        if(is_null($eliminarSeguidor)){
+
+            $user->seguidores()->detach(auth()->user()->id);
+        }else{
+            auth()->user()->seguidores()->detach($user->id);
+        }
 
         return back();
     }
+
+
     public function show_seguidores(User $user){
 
         $seguidores = $user->seguidores()->get();

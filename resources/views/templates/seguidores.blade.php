@@ -10,14 +10,21 @@ Seguidores de {{$user->username}}
 @section('contenido')
     {{-- Muestra la data de los seguidores de un usuario --}}
 
-    <div class="container mx-auto md:flex gap-6 p-10 justify-center md:flex-row grid grid-cols-1 sm:grid-cols-2">
+    <div class="container mx-auto flex flex-col gap-6 p-10">
         @foreach ($seguidores as $seguidor)
-            <div class=" border-2 rounded p-5 bg-white md:w-1/4">
-                <div class="" >
-                    <img class=" object-cover h-60 md:h-48 w-96 object-center" src="{{asset('perfiles/'.$seguidor->imagen)}}" alt="imagen_perfil">
+            <div class=" flex justify-start">
+                <div class=" w-full flex justify-start items-center gap-4" >
+                    <img class=" object-cover rounded-full w-24 h-24 object-center" src="{{asset('perfiles/'.$seguidor->imagen)}}" alt="imagen_perfil">
+                    <a class="font-bold capitalize text-titulos" href="{{ route('posts.muro', $seguidor->username) }}">{{ $seguidor->username }}</a>
+
+                    {{-- Eliminar seguidor --}}
+                       <form action="{{ route('usuarios.no_seguir', ['user' => $seguidor->id, 'eliminarSeguidor' => 'eliminar']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="my-5 p-1 text-gray-600 uppercase rounded cursor-pointer" type="submit"
+                                        value="X">
+                        </form>
                 </div>
-                
-                <a class="font-bold uppercase" href="{{ route('posts.muro', $seguidor->username) }}">{{ $seguidor->username }}</a>
             </div>
         @endforeach
     </div>
