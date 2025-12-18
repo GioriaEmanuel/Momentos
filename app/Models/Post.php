@@ -39,7 +39,7 @@ class Post extends Model
         //Podemos filtrar los resultados con el metodo select(),
 
         return $this->belongsTo(User::class)->select([
-            'name','username','imagen'
+            'id','name','username','imagen'
         ]);
     }
 

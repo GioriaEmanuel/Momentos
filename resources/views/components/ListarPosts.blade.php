@@ -1,5 +1,7 @@
 
-    @foreach ($usuarios as $post)
+@foreach ($posts as $post)
+
+
         <div class=" border-2 rounded p-5 bg-fondosecundario  flex flex-col gap-3 h-fit ">
 
             {{-- Usuarios y ultimo post de cada uno --}}

@@ -54,9 +54,9 @@
     <main>
 
 
-        <h2 class=" uppercase text-center text-titulos font-black md:text-5xl text-3xl md:mb-20 mt-20 w-full">
+        <div class=" uppercase text-center text-titulos font-black md:text-5xl text-3xl w-full py-10">
             @yield('titulo')
-        </h2>
+        </div>
 
 
 

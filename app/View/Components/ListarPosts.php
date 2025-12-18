@@ -10,13 +10,13 @@ class ListarPosts extends Component
 {
  
     //instancio la informacion que va a manejar el componente
-     public $usuarios;
+     public $posts;
 
-    public function __construct($usuarios)
+    public function __construct($posts)
     {
         //el constructor se ejecuta automaticamente cuando llamo al componenete en la vista <x-ListarPost> y absorve la variable usuario
         //de lo que le pase al llamarla <x-ListarPosts :usuarios="$usuarios"/> : ese $usuarios es el que el controlador de la vista le preporciona
-        $this->usuarios = $usuarios;
+        $this->posts = $posts;
 
 
     }

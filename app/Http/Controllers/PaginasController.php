@@ -19,33 +19,41 @@ class PaginasController extends Controller
         if (auth()->user()) {
             //obtengo los seguidos por el ususario autenticado, por las dudas, todavaia no se si es necesario
             $usuarios = User::find(auth()->user()->id)->seguidos()->get();
+           
             //relacion con usuarios no seguidos
             $usuarios_no_seguidos = User::find(auth()->user()->id)->no_seguidos()->get();
+           
             // Obtener los IDs de los usuarios a los que sigue el usuario autenticado
             $seguidos_id = $user->seguidos()->pluck('users.id')->toArray();
+            // Obtener los IDs de los usuarios que no sigue el usuario autenticado
             $no_seguidos_id = $user->no_seguidos()->pluck('users.id')->toArray();
-
+            
             // Obtener los posts de estos usuarios, ordenados por fecha de creación descendente
             $posts = Post::whereIn('user_id', $seguidos_id)
-                ->latest()
-                ->get(); // Pagina los resultados (ej. 10 posts por página)
+            ->has('user')//ME ASEGURO QUE EL USUARIO EXISTA
+            ->latest()
+            ->with('user.seguidores')
+            ->get(); // Pagina los resultados (ej. 10 posts por página)
             
-                // Obtener los posts de estos usuarios no seguidos, ordenados por fecha de creación descendente
+            // Obtener los posts de estos usuarios no seguidos, ordenados por fecha de creación descendente
             $posts_no_seguidos = Post::whereIn('user_id', $no_seguidos_id)
-                ->latest()
-                ->get(); // Pagina los resultados (ej. 10 posts por página)
-
-
+            ->has('user')//ME ASEGURO QUE EL USUARIO EXISTA
+            ->latest()
+            ->with('user.seguidores')
+            ->get(); // Pagina los resultados (ej. 10 posts por página)
+            
+            
         } else {
             //sino esta logueado obtengo todos
             $posts = Post::inRandomOrder()->get();
             $posts_no_seguidos = [];
             $usuarios = User::all();
             $usuarios_no_seguidos = [];
+            
         }
+        
 
 
-       
 
         return view('templates.inicio', [
             'usuarios' => $usuarios,

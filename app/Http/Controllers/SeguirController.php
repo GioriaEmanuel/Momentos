@@ -30,8 +30,8 @@ class SeguirController extends Controller
 
         //Al pasar otro argumento en el llamado a la funcion desde blade, este llega como atributo del request, en $peti->query,
         //lo extraigo y lo utilizo como condicion
-
         $eliminarSeguidor = $peti->eliminarSeguidor;
+        
         
         if(is_null($eliminarSeguidor)){
 

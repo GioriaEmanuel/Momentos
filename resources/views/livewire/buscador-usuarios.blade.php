@@ -14,7 +14,7 @@
     <div class=" container w-11/12 max-h-52 m-auto bg-fondosecundario rounded grid grid-cols-12  mb-10 gap-4">
         {{-- usuario buscado --}}
         <div class="box_border_animated imagen__notificacion md:col-span-2 col-span-4">
-            <a class="" href="{{route('posts.muro', $user->name)}}">
+            <a class="" href="{{route('posts.muro', $user->username)}}">
                 <img class=" h-24 w-32 object-cover " src="{{asset('perfiles/'. $user->imagen)}}" alt="imagen perfil">
             </a>
         </div>

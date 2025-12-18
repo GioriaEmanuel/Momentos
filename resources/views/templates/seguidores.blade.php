@@ -17,13 +17,15 @@ Seguidores de {{$user->username}}
                     <img class=" object-cover rounded-full w-24 h-24 object-center" src="{{asset('perfiles/'.$seguidor->imagen)}}" alt="imagen_perfil">
                     <a class="font-bold capitalize text-titulos" href="{{ route('posts.muro', $seguidor->username) }}">{{ $seguidor->username }}</a>
 
-                    {{-- Eliminar seguidor --}}
+                    {{-- Eliminar seguidor con policie de por medio para evitar borrar seguidores de otros usuarios --}}
+                    @can('DejarDeSeguir', $user)
                        <form action="{{ route('usuarios.no_seguir', ['user' => $seguidor->id, 'eliminarSeguidor' => 'eliminar']) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input class="my-5 p-1 text-gray-600 uppercase rounded cursor-pointer" type="submit"
                                         value="X">
                         </form>
+                    @endcan
                 </div>
             </div>
         @endforeach
